@@ -38,7 +38,7 @@ if [[ ${resp} = [yY] ]]; then
         hd_name='SAMSUNG HD322HJ'
 
         if [[ $hd_model == *"$hd_name"* ]]; then
-            echo "/dev/${i}1 /mnt/${i}1 ntfs-3g ro 0 0" >> /etc/fstab
+            echo "/dev/${i}1 /mnt/${i}1 ntfs-3g defaults 0 0" >> /etc/fstab
             mkdir /mnt/${i}1
             mount /dev/${i}1
 
