@@ -1,9 +1,9 @@
 #!/bin/bash
-#:Title             : Restoration script for Windows
+#:Title             : Restore script for Windows
 #:Date              : jul 28 2022
 #:Author            : raf312
 #:Version           : 2.0.0
-#:Description       : Windows image restoration script
+#:Description       : Windows image restore script
 
 clear
 
