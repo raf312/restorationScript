@@ -2,7 +2,7 @@
 #:Title             : Restoration script for Windows
 #:Date              : jul 28 2022
 #:Author            : raf312
-#:Version           : 2.0.0
+#:Version           : 2.0.1
 #:Description       : Windows image restoration script
 
 clear
