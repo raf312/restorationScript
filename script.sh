@@ -1,9 +1,9 @@
 #!/bin/bash
-#:Title             : Restore script for Windows
+#:Title             : Restoration script for Windows
 #:Date              : jul 28 2022
 #:Author            : raf312
 #:Version           : 2.0.0
-#:Description       : Windows image restore script
+#:Description       : Windows image restoration script
 
 clear
 
@@ -28,7 +28,7 @@ alert() {
     printf '%s\n' "$_REPEAT"
 }
 
-alert "WINDOWS 10 RESTORE SYSTEM - LINUX"
+alert "WINDOWS 10 SYSTEM RESTORE"
 
 printf "\nType 'y' to start the restore process.\n"
 read resp
@@ -41,23 +41,32 @@ if [[ ${resp} = [yY] ]]; then
             echo "/dev/${i}1 /mnt/${i}1 ntfs-3g ro 0 0" >> /etc/fstab
             mkdir /mnt/${i}1
             mount /dev/${i}1
+
             img=/mnt/${i}1/img
             recycle="\$RECYCLE.BIN"
             systeminfo="System Volume Information"
             cd /mnt/${i}1/
-            # rm -fr $recycle
-            # rm -fr "$systeminfo"
             echo $PWD
-            # SLEEP
+
+            printf "\n Do you want delete $recycle and $systeminfo folder? [y/N]: "
+            read response
+            if [[ $response == [yY] ]]; then
+                rm -fr $recycle
+                rm -fr "$systeminfo"
+            else
+                continue
+            fi
+
+            echo $PWD
             sleep 1
 
             while true; do
                 clear
-                printf "\n - Backup list:"
+                printf "\n - Backup list: "
                 ls $img
+                
                 printf "\n - Enter date of the backup to be restored: "
                 read dataBackup
-
                 if [[ -d $img/$dataBackup ]]; then
                     partimage restore /dev/sda1 $img/$dataBackup/win10sda1.000 -b -e
                     partimage restore /dev/sda3 $img/$dataBackup/win10sda3.000 -b -e
@@ -78,10 +87,12 @@ else
 fi
 
 alert "SYSTEM REBOOT"
+
 printf "\nType 'y' to reboot your computer...\n"
 read resp
 if [[ ${resp} = [yY] ]]; then
     printf "Rebooting...\n"
+    
     printf "\a3\n"
     sleep 1
     printf "\a2\n"
