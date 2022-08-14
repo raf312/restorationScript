@@ -1,8 +1,8 @@
 #!/bin/bash
 #:Title             : Restoration script for Windows
-#:Date              : jul 28 2022
+#:Date              : ago 13 2022
 #:Author            : raf312
-#:Version           : 2.0.1
+#:Version           : 2.0.2
 #:Description       : The script restores an SDA disk image taken on the SAMSUNG HD322HJ hard drive. Here the drive to be restored is SDA. If I didn't know which drive to restore I could get the disk ID and restore it. As I know my drive is the SDA I already pre-set to 'partimage restore /dev/sdaX' (where X is the partition number).
 
 clear
@@ -30,7 +30,7 @@ alert() {
 
 alert "WINDOWS 10 SYSTEM RESTORE"
 
-printf "\nType 'y' to start the restore process.\n"
+printf "\nType 'y' to start the restore process. [y/N]: "
 read resp
 if [[ ${resp} = [yY] ]]; then
     for i in sda sdb sdc sdd sde sdf; do
@@ -38,9 +38,23 @@ if [[ ${resp} = [yY] ]]; then
         hd_name='SAMSUNG HD322HJ'
 
         if [[ $hd_model == *"$hd_name"* ]]; then
-            echo "/dev/${i}1 /mnt/${i}1 ntfs-3g defaults 0 0" >> /etc/fstab
-            mkdir /mnt/${i}1
-            mount /dev/${i}1
+            mountPoint="/dev/${i}1 /mnt/${i}1 ntfs-3g defaults 0 0"
+            tailfstab=$(tail -n 1 /etc/fstab)
+
+            if [[ $tailfstab == *"$mountPoint"* ]]; then
+                printf "\nThe mount point exists..."
+            else
+                printf "\nAdd mount moint on fstab"
+                echo $mountPoint >> /etc/fstab
+                cat /etc/fstab
+            fi
+
+            if [[ -d /mnt/${i}1 ]]; then
+                printf "\nDirectory exists..."
+            else
+                mkdir /mnt/${i}1
+                mount /dev/${i}1
+            fi
 
             img=/mnt/${i}1/img
             recycle="\$RECYCLE.BIN"
@@ -53,11 +67,9 @@ if [[ ${resp} = [yY] ]]; then
             if [[ $response == [yY] ]]; then
                 rm -fr $recycle
                 rm -fr "$systeminfo"
-            else
-                continue
             fi
 
-            echo $PWD
+            ls
             sleep 1
 
             while true; do
