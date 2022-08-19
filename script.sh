@@ -67,9 +67,9 @@ if [[ ${resp} = [yY] ]]; then
                 printf "\n - Enter date of the backup to be restored: "
                 read dataBackup
                 if [[ -d $img/$dataBackup ]]; then
-                    partimage restore /dev/sda1 $img/$dataBackup/win10sda1.000 -b -e
-                    partimage restore /dev/sda3 $img/$dataBackup/win10sda3.000 -b -e
-                    partimage restore /dev/sda2 $img/$dataBackup/win10sda2.000 -b
+                    sudo partimage restore /dev/sda1 $img/$dataBackup/win10sda1.000 -b -e
+                    sudo partimage restore /dev/sda3 $img/$dataBackup/win10sda3.000 -b -e
+                    sudo partimage restore /dev/sda2 $img/$dataBackup/win10sda2.000 -b
 
                     cd $HOME
                     umount /dev/${i}1
