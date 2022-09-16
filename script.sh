@@ -34,10 +34,10 @@ printf "\nType 'y' to start the restore process.\n"
 read resp
 if [[ ${resp} = [yY] ]]; then
     for i in sda sdb sdc sdd sde sdf; do
-        hd_model=$(cat /sys/block/$i/device/model)
+        device=$(cat /sys/block/$i/device/model)
         hd_name='SAMSUNG HD322HJ'
 
-        if [[ $hd_model == *"$hd_name"* ]]; then
+        if [[ $device == *"$hd_name"* ]]; then
             echo "/dev/${i}1 /mnt/${i}1 ntfs-3g defaults 0 0" >> /etc/fstab
             mkdir /mnt/${i}1
             mount /dev/${i}1
