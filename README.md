@@ -1,6 +1,6 @@
 # WinRestoreScript
 
-$ lsb_release -a\n
+$ lsb_release -a</br>
 Distributor ID:	Debian
 Description:	Debian GNU/Linux 11 (bullseye)
 Release:	11
