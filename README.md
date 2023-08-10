@@ -1,18 +1,20 @@
-# Restore Script para Windows
+# Script de Restauração para Windows
+**Atenção**: Este script foi criado para a minha estrutura de pastas e devices. Antes de usar, verifique se os detalhes estão alinhados com a sua configuração.</br></br>
 Este script é usado para restaurar uma imagem de disco SDA de um disco rígido SAMSUNG HD322HJ. A imagem foi previamente criada como backup. Este script é projetado especificamente para a unidade SDA.
 
-# Requisitos do Sistema
+## Requisitos do Sistema
 - Distribuição: Debian</br>
+- Release: 11</br>
+- Codinome: bullseye</br>
 
-$ lsb_release -a</br>
-Distributor ID:	Debian</br>
-Description:	Debian GNU/Linux 11 (bullseye)</br>
-Release:	11</br>
-Codename:	bullseye</br>
-
-$ uname -a</br>
-Linux debian 5.10.0-18-amd64 #1 SMP Debian 5.10.140-1 (2022-09-02) x86_64 GNU/Linux
-
-Requirements:</br>
-partimage</br>
-Depends: libbz2-1.0, libc6 (>= 2.14), libgcc-s1 (>= 3.0), libnewt0.52 (>= 0.52.21), libslang2 (>= 2.2.4), libssl1.1 (>= 1.1.0), libstdc++6 (>= 5), zlib1g (>= 1:1.2.3.3), fdisk
+## Pré-requisitos
+Este script requer a instalação do utilitário **partimage** e suas dependências:
+- libbz2-1.0</br>
+- libc6 (>= 2.14)</br>
+- libgcc-s1 (>= 3.0)</br>
+- libnewt0.52 (>= 0.52.21)</br>
+- libslang2 (>= 2.2.4)</br>
+- libssl1.1 (>= 1.1.0)</br>
+- libstdc++6 (>= 5)</br>
+- zlib1g (>= 1:1.2.3.3)</br>
+- fdisk</br>
