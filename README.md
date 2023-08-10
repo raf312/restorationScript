@@ -1,5 +1,8 @@
-# WinRestoreScript
-Restore script for my Windows. The script restores an SDA disk image taken on the SAMSUNG HD322HJ hard drive. Here the drive to be restored is SDA.
+# Restore Script para Windows
+Este script é usado para restaurar uma imagem de disco SDA de um disco rígido SAMSUNG HD322HJ. A imagem foi previamente criada como backup. Este script é projetado especificamente para a unidade SDA.
+
+# Requisitos do Sistema
+- Distribuição: Debian</br>
 
 $ lsb_release -a</br>
 Distributor ID:	Debian</br>
