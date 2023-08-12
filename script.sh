@@ -3,7 +3,6 @@
 #:Date              : jul 28 2022
 #:Author            : raf312
 #:Version           : 2.0.1
-#:Description       : The script restores an SDA disk image taken on the SAMSUNG HD322HJ hard drive. Here the drive to be restored is SDA.
 
 clear
 
