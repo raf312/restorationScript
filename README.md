@@ -18,3 +18,4 @@ Este script requer a instalação do utilitário **partimage** e suas dependênc
 - libstdc++6 (>= 5)</br>
 - zlib1g (>= 1:1.2.3.3)</br>
 - fdisk</br>
+- partimage</br>
